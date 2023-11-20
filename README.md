@@ -140,3 +140,11 @@ result_df = sqlContext.createDataFrame(df)
 result_df.show()
 endtime=time.time()
 print endtime - starttime
+
+
+# Save the trained models to the current directory
+model_cat1_path = "model_cat1"
+model_cat2_path = "model_cat2"
+
+model_cat1.write().overwrite().save(model_cat1_path)
+model_cat2.write().overwrite().save(model_cat2_path)

@@ -142,9 +142,22 @@ endtime=time.time()
 print endtime - starttime
 
 
-# Save the trained models to the current directory
-model_cat1_path = "model_cat1"
-model_cat2_path = "model_cat2"
+import os
 
+# Check the current working directory
+print("Current working directory:", os.getcwd())
+
+# Define the model save paths
+model_cat1_path = os.path.join(os.getcwd(), "model_cat1")
+model_cat2_path = os.path.join(os.getcwd(), "model_cat2")
+
+# Create directories if they don't exist
+os.makedirs(model_cat1_path, exist_ok=True)
+os.makedirs(model_cat2_path, exist_ok=True)
+
+# Save the models
 model_cat1.write().overwrite().save(model_cat1_path)
 model_cat2.write().overwrite().save(model_cat2_path)
+
+print("Models saved successfully.")
+
